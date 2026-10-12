@@ -1,7 +1,15 @@
 package esepunittests
 
+type GradingMode int
+
+const (
+    LetterGrade GradingMode = iota
+    PassFail
+)
+
 type GradeCalculator struct {
-	grades []Grade
+    grades []Grade
+    mode GradingMode
 }
 
 type GradeType int
@@ -28,9 +36,10 @@ type Grade struct {
 	Type  GradeType
 }
 
-func NewGradeCalculator() *GradeCalculator {
+func NewGradeCalculator(mode GradingMode) *GradeCalculator {
     return &GradeCalculator{
         grades: make([]Grade, 0),
+        mode: mode,
     }
 }
 
